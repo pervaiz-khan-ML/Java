@@ -1,0 +1,27 @@
+//Consider a string, S, that is a series of characters, each followed by its frequency as an integer.
+// Test practice - "a3b5c2a2"-->"aaabbbbbcc"
+//This Java program is decompressing a run-length–encoded string
+import java.util.*;
+
+public class Main {
+    public static String properCompression(String strInput) {
+        StringBuilder compressedStr = new StringBuilder();
+
+        for (int i = 0; i < strInput.length(); i += 2) { 
+			char c = strInput.charAt(i); 
+			int count = Character.getNumericValue(strInput.charAt(i + 1));
+			while (count > 0) {
+                compressedStr.append(c);
+                count--;
+            }
+        }
+
+        return compressedStr.toString();
+    }
+
+    public static void main(String[] args) {
+        String inputStr = "a3b5c2a2";
+        String compressedResult = properCompression(inputStr);
+        System.out.println(compressedResult);  // Output: "aaabbbbbcc"
+    }
+}
